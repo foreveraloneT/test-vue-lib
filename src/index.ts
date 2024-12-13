@@ -1,1 +1,4 @@
-import '@/assets/main.css'
+import '@/assets/main.css';
+
+export * from './components';
+export * from './stores';

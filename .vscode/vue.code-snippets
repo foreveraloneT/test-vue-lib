@@ -1,0 +1,96 @@
+{
+  // Place your oaplus-client-template workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+  // Placeholders with the same ids are connected.
+  "initial Vue3 SFC base code": {
+    "scope": "vue",
+    "prefix": "vinit",
+    "body": [
+      "<script setup lang=\"ts\">",
+      "defineOptions({",
+      "\tname: '$1',",
+      "});",
+      "</script>",
+      "",
+      "<template>\n\t<p>Have fun! 🎉</p>\n</template>\n",
+      "<style lang=\"scss\" scoped>\n</style>\n",
+    ],
+    "description": "initial Vue3 SFC base code"
+  },
+  "add Vue3 vprops composition API": {
+    "scope": "vue,typescript",
+    "prefix": "vprops",
+    "body": [
+      "type Props = {\n\t$1\n}\n",
+      "const props = $0defineProps<Props>()\n",
+    ],
+    "description": "add Vue3 vprops composition API"
+  },
+  "add Vue3 vprops + withDdefaults composition API": {
+    "scope": "vue,typescript",
+    "prefix": "vpropsdefault",
+    "body": [
+      "type Props = {\n\t$1\n}\n",
+      "const props = $0withDefaults(defineProps<Props>(), {",
+      "\t$2",
+      "})"
+    ],
+    "description": "add Vue3 vprops + withDdefaults composition API"
+  },
+  "add Vue3 vemits composition API": {
+    "scope": "vue,typescript",
+    "prefix": "vemits",
+    "body": [
+      "type Emit = {",
+      "\t(e: '$1', value: $2): void",
+      "}",
+      "const emit = $0defineEmits<Emit>()\n",
+    ],
+    "description": "add Vue3 vemits composition API"
+  },
+  "add Vue3 computed composition API": {
+    "scope": "vue,typescript",
+    "prefix": ["vcomputed", "compute"],
+    "body": [
+      "computed<$1>(() => {$0})",
+    ],
+    "description": "add Vue3 computed composition API"
+  },
+  "add $t XLT golbal API": {
+    "scope": "vue,typescript,html",
+    "prefix": ["tt", "txlt"],
+    "body": [
+      "$$t('$1')",
+    ],
+    "description": "add $t XLT golbal API"
+  },
+  "add i18n store": {
+    "scope": "vue,typescript",
+    "prefix": ["uset"],
+    "body": [
+      "const { t } = useI18n();",
+    ],
+    "description": "add i18n store"
+  },
+  "create pinia store": {
+    "scope": "typescript",
+    "prefix": ["vpinia"],
+    "body": [
+      "import { defineStore, acceptHMRUpdate } from 'pinia';",
+      "",
+      "export const use$2Store = defineStore('$1', () => {",
+      "\t$0",
+      "",
+      "\treturn {};",
+      "});",
+      "",
+      "if (import.meta.hot) {",
+      "\timport.meta.hot.accept(acceptHMRUpdate(use$2Store, import.meta.hot));",
+      "}"
+    ],
+    "description": "create pinia store"
+  },
+}

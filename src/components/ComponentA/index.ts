@@ -1,3 +1,3 @@
-import ComponentA from "./ComponentA.vue";
+import ComponentA from './ComponentA.vue';
 
 export default ComponentA;

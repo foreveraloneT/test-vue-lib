@@ -1,3 +1,3 @@
-import NumberCounterContainer from "./NumberCounterContainer.vue";
+import NumberCounterContainer from './NumberCounterContainer.vue';
 
 export default NumberCounterContainer;

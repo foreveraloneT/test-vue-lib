@@ -1,0 +1,28 @@
+name: Publish NPM Package
+
+on:
+  push:
+    tags:
+      - v**
+
+jobs:
+  publish-npm:
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    runs-on: [self-hosted]
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          registry-url: https://npm.linecorp.com/
+          cache: 'npm'
+      - name: prepare npm auth token
+        run: echo  "\n//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run: npm ci
+      - run: npm run build
+      - name: publish to npm
+        working-directory: ./dist
+        run: npm publish

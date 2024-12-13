@@ -1,0 +1,56 @@
+{
+	// Place your oaplus-client-template workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+  "decalre ES6 string template with highlighting comment": {
+    "scope": "javascript,typescript",
+    "prefix": "htemplate",
+    "body": [
+      "/*template*/`",
+      "\t$1",
+      "`"
+    ],
+    "description": "decalre ES6 string template with highlighting comment"
+  },
+  "highlighting ES6 string template by adding comment": {
+    "scope": "javascript,typescript",
+    "prefix": "ctemplate",
+    "body": [
+      "/*${1|template,html|}*/"
+    ],
+    "description": "highlighting ES6 string template by adding comment"
+  },
+	"initial basic storybook": {
+		"scope": "typescript",
+		"prefix": "storybook",
+    "description": "initial basic storybook",
+		"body": [
+			"import type { Meta, StoryObj } from '@storybook/vue3';",
+      "",
+      "import $1 from '../$1.vue';",
+      "",
+      "const meta: Meta<typeof $1> = {",
+      "\ttitle: '${2|Views,Common|}/$1',",
+      "\tcomponent: $1,",
+      "\ttags: ['autodocs'],",
+      "};",
+      "",
+      "export default meta;",
+      "type Story = StoryObj<typeof $1>;",
+      "",
+      "export const Playground: Story = {",
+      "\trender: (args) => ({",
+      "\t\tcomponents: { $1 },",
+      "\t\tsetup() {",
+      "\t\t\treturn { args };",
+      "\t\t},",
+      "\t\ttemplate: '<$1 v-bind=\"args\" />',",
+      "\t}),",
+      "};",
+      "",
+		],
+	},
+}
