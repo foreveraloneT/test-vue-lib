@@ -1,6 +1,6 @@
-import ComponentA from './ComponentA/ComponentA.vue';
-import ComponentB from './ComponentB/ComponentB.vue';
-import NumberCounter from './NumberCounter/NumberCounter.vue';
+import ComponentA from './ComponentA';
+import ComponentB from './ComponentB';
+import NumberCounter from './NumberCounter';
 
 export {
   ComponentA,
