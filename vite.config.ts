@@ -61,7 +61,7 @@ export default defineConfig({
     lib: {
       entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
       formats: ['es'],
-      fileName: (_, entryName) => `${entryName}.js`,
+      fileName: (_, entryName) => `${entryName}/index.js`,
       cssFileName: 'style',
     },
     rollupOptions: {
