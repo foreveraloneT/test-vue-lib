@@ -35,7 +35,6 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     dts({
-      outDir: 'dist/types',
       entryRoot: fileURLToPath(new URL('./src', import.meta.url)),
       tsconfigPath: './tsconfig.app.json',
       exclude: [
@@ -61,7 +60,13 @@ export default defineConfig({
     lib: {
       entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
       formats: ['es'],
-      fileName: (_, entryName) => `${entryName}/index.js`,
+      fileName: (_, entryName) => {
+        if (entryName.endsWith('index')) {
+          return `${entryName}.js`;
+        }
+
+        return `${entryName}/index.js`;
+      },
       cssFileName: 'style',
     },
     rollupOptions: {
