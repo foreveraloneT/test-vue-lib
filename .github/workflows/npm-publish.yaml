@@ -7,9 +7,6 @@ on:
 
 jobs:
   publish-npm:
-    env:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
     runs-on: [ubuntu-latest]
 
     steps:
@@ -17,10 +14,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - name: prepare npm auth token
-        run: echo  "\n//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+          registry-url: 'https://registry.npmjs.org'
       - run: npm ci
       - run: npm run build
       - name: publish to npm
         working-directory: ./dist
         run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
