@@ -23,9 +23,6 @@
   },
   "main": "index.js",
   "types": "types/index.d.ts",
-  "files": [
-    "types"
-  ],
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",
     "@storybook/addon-essentials": "^8.4.7",
