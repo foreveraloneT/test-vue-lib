@@ -6,14 +6,18 @@ import { createTestVueLib } from '../src';
 
 import '../src/assets/main.css';
 
+const testVueLibPlugin = createTestVueLib({
+  counter: {
+    initialValue: 10,
+    step: 2,
+  },
+});
+
+const { translator } = testVueLibPlugin;
+
 setup((app) => {
   app.use(createPinia());
-  app.use(createTestVueLib({
-    counter: {
-      initialValue: 10,
-      step: 2,
-    },
-  }));
+  app.use(testVueLibPlugin);
 });
 
 const preview: Preview = {
@@ -22,6 +26,35 @@ const preview: Preview = {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
+      },
+    },
+  },
+  decorators: [
+    (story, context) => {
+      const { locale } = context.globals;
+
+      translator.locale = locale;
+
+      return {
+        components: { story },
+        template: '<story />',
+      };
+    }
+  ],
+  globalTypes: {
+    locale: {
+      name: 'Locale',
+      description: 'Internationalization locale',
+      defaultValue: 'th',
+      toolbar: {
+        icon: 'globe',
+        items: [
+          { value: 'en', right: '🇺🇸', title: 'English' },
+          { value: 'th', right: '🇹🇭', title: 'ไทย' },
+          { value: 'ja', right: '🇯🇵', title: '日本' },
+          { value: 'ko', right: '🇰🇷', title: '한국어' },
+          { value: 'zh_TW', right: '🇨🇳', title: '中文' },
+        ],
       },
     },
   },

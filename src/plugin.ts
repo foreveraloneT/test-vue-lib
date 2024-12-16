@@ -1,6 +1,11 @@
 import { inject, readonly, type Plugin } from 'vue';
 
 import { testVueLibKey } from '@/keys';
+import { createTranslator, type Translator  } from '@/locale';
+
+type TestVueLibPlugin = Plugin & {
+  translator: Translator;
+}
 
 export type CounterOptions = {
   initialValue?: number;
@@ -18,8 +23,13 @@ const DEFAULT_OPTIONS: PluginOptions = {
   },
 };
 
-export function createTestVueLib(options: PluginOptions): Plugin {
+const DEFAULT_LOCALE = 'en';
+
+export function createTestVueLib(options: PluginOptions): TestVueLibPlugin {
+  const translatorPlugin = createTranslator(DEFAULT_LOCALE);
+
   return {
+    translator: translatorPlugin.translator,
     install(app) {
       const finalOptions = {
         ...DEFAULT_OPTIONS,
@@ -28,6 +38,8 @@ export function createTestVueLib(options: PluginOptions): Plugin {
           ...options.counter,
         },
       };
+
+      app.use(translatorPlugin);
 
       app.provide(testVueLibKey, readonly(finalOptions));
     },
