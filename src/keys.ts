@@ -1,0 +1,1 @@
+export const testVueLibKey = Symbol();

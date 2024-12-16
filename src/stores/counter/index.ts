@@ -1,14 +1,18 @@
 import { ref, computed } from 'vue';
 import { defineStore, acceptHMRUpdate } from 'pinia';
 
+import { useTestVueLibOptions } from '@/plugin';
+
 export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0);
+  const options = useTestVueLibOptions();
+
+  const count = ref<number>(options.counter?.initialValue ?? 0);
   const doubleCount = computed(() => count.value * 2);
   function increment() {
-    count.value++;
+    count.value += options.counter?.step ?? 1;
   }
   function decrement() {
-    count.value--;
+    count.value -= options.counter?.step ?? 1;
   }
 
   return { count, doubleCount, increment, decrement };
