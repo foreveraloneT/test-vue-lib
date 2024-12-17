@@ -3,6 +3,13 @@ import { createPinia } from 'pinia';
 import type { Preview } from '@storybook/vue3';
 
 import { createTestVueLib } from '../src';
+import {
+  th,
+  en,
+  ja,
+  ko,
+  zh_TW,
+} from '../src/locale';
 
 import '../src/assets/main.css';
 
@@ -14,6 +21,8 @@ const testVueLibPlugin = createTestVueLib({
 });
 
 const { translator } = testVueLibPlugin;
+
+translator.addTranslations(th, en, ja, ko, zh_TW);
 
 setup((app) => {
   app.use(createPinia());
@@ -33,7 +42,7 @@ const preview: Preview = {
     (story, context) => {
       const { locale } = context.globals;
 
-      translator.locale = locale;
+      translator.setLocale(locale);
 
       return {
         components: { story },
