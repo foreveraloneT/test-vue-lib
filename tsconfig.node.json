@@ -5,9 +5,7 @@
     "vitest.config.*",
     "cypress.config.*",
     "nightwatch.conf.*",
-    "playwright.config.*",
-    "tailwind.config.*",
-    "postcss.config.*",
+    "playwright.config.*"
   ],
   "compilerOptions": {
     "composite": true,

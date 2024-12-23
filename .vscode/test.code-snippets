@@ -1,0 +1,62 @@
+{
+	"initial unit test with vitest": {
+		"scope": "typescript",
+		"prefix": "unit",
+		"body": [
+			"import { ${1|shallowMount,mount|} } from '@vue/test-utils';",
+      "import { describe, it, expect } from 'vitest';\n",
+      "import $2 from '../$2${3:.vue}';\n",
+      "describe('$2$3', () => {",
+      "\t$0",
+      "});\n"
+		],
+		"description": "initial unit test with vitest"
+	},
+  "initial unit test with snapshots": {
+		"scope": "typescript",
+		"prefix": "unitsnap",
+		"body": [
+			"import { ${1|shallowMount,mount|} } from '@vue/test-utils';",
+      "import { describe, it, expect } from 'vitest';\n",
+      "import $2 from '../$2.vue';\n",
+      "describe('$2', () => {",
+      "\tdescribe('snapshots', () => {",
+      "\t\tit('should render properly', () => {",
+      "\t\t\tconst wrapper = $1($2, {",
+      "\t\t\t\tprops: {",
+      "\t\t\t\t\t$0",
+      "\t\t\t\t},",
+      "\t\t\t});\n",
+      "\t\t\texpect(wrapper.element).matchSnapshot();",
+      "\t\t});",
+      "\t});",
+      "});\n"
+		],
+		"description": "initial unit test with vitest"
+	},
+	"initial unit test of Pinia": {
+		"scope": "typescript",
+		"prefix": "unitpinia",
+		"body": [
+			"import { createPinia, setActivePinia } from 'pinia';",
+			"import {",
+			"\tdescribe,",
+			"\tit,",
+			"\texpect,",
+			"\tbeforeEach,",
+			"} from 'vitest';",
+			"",
+			"import { $2 } from '../$1';",
+			"",
+			"describe('store/$1', () => {",
+			"\tbeforeEach(() => {",
+			"\t\tsetActivePinia(createPinia());",
+			"\t});",
+			"",
+			"\t$0",
+			"});",
+			"",
+		],
+		"description": "initial unit test of Pinia"
+	},
+}

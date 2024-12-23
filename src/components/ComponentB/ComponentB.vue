@@ -17,7 +17,7 @@ const { t } = useI18n();
 
 <template>
   <div class="tv-p-4 tv-rounded-lg tv-bg-red-500 tv-text-white tv-w-fit">
-    {{ t('oapluscomponent.componentb.title') }}:
+    {{ t('tvcomponent.componentb.title') }}:
     <b>{{ toLower(text) }}</b>
   </div>
 </template>
