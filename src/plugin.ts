@@ -7,14 +7,22 @@ export type CounterOptions = {
   step?: number;
 }
 
+export type ValidationOptions = {
+  errorAttribute: string;
+}
+
 export type PluginOptions = {
   counter?: CounterOptions;
+  validation?: ValidationOptions;
 }
 
 const DEFAULT_OPTIONS: PluginOptions = {
   counter: {
     initialValue: 0,
     step: 1,
+  },
+  validation: {
+    errorAttribute: 'data-error',
   },
 };
 

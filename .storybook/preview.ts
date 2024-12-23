@@ -3,6 +3,8 @@ import { createPinia } from 'pinia';
 import type { Preview } from '@storybook/vue3';
 import { createI18n } from 'vue-i18n';
 
+import './vee-validate';
+
 import { createTestVueLib } from '../src';
 import {
   th,
