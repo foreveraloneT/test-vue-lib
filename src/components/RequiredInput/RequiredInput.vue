@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Field as VField } from 'vee-validate';
+import { Field } from 'vee-validate';
 
 import { useTestVueLibOptions } from '@/plugin';
 
@@ -27,7 +27,7 @@ function errorAttr(isError: boolean): Record<string, boolean> {
 </script>
 
 <template>
-  <VField
+  <Field
     v-slot="{ errors, field }"
     rules="required"
     :name="name"
@@ -49,5 +49,5 @@ function errorAttr(isError: boolean): Record<string, boolean> {
         {{ errors[0] }}
       </div>
     </div>
-  </VField>
+  </Field>
 </template>
