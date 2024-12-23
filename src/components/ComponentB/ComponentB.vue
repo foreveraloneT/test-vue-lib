@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import toLower from 'lodash/toLower';
-import { useTranslator } from '@/locale';
+import { useI18n } from 'vue-i18n';
 
 defineOptions({
   name: 'ComponentB',
@@ -12,7 +12,7 @@ type Props = {
 
 defineProps<Props>();
 
-const { t } = useTranslator();
+const { t } = useI18n();
 </script>
 
 <template>

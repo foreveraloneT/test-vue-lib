@@ -1,6 +1,7 @@
 import { setup } from '@storybook/vue3';
 import { createPinia } from 'pinia';
 import type { Preview } from '@storybook/vue3';
+import { createI18n } from 'vue-i18n';
 
 import { createTestVueLib } from '../src';
 import {
@@ -10,8 +11,18 @@ import {
   ko,
   zh_TW,
 } from '../src/locale';
-
 import '../src/assets/main.css';
+
+const i18n = createI18n({
+  locale: 'th',
+  messages: {
+    th,
+    en,
+    ja,
+    ko,
+    zh_TW,
+  },
+});
 
 const testVueLibPlugin = createTestVueLib({
   counter: {
@@ -20,12 +31,9 @@ const testVueLibPlugin = createTestVueLib({
   },
 });
 
-const { translator } = testVueLibPlugin;
-
-translator.addTranslations(th, en, ja, ko, zh_TW);
-
 setup((app) => {
   app.use(createPinia());
+  app.use(i18n);
   app.use(testVueLibPlugin);
 });
 
@@ -42,7 +50,7 @@ const preview: Preview = {
     (story, context) => {
       const { locale } = context.globals;
 
-      translator.setLocale(locale);
+      i18n.global.locale = locale;
 
       return {
         components: { story },

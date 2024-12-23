@@ -1,11 +1,6 @@
 import { inject, readonly, type Plugin } from 'vue';
 
 import { testVueLibKey } from '@/keys';
-import { createTranslator, type GlobalTranslator  } from '@/locale';
-
-type TestVueLibPlugin = Plugin & {
-  translator: GlobalTranslator;
-}
 
 export type CounterOptions = {
   initialValue?: number;
@@ -23,11 +18,8 @@ const DEFAULT_OPTIONS: PluginOptions = {
   },
 };
 
-export function createTestVueLib(options: PluginOptions): TestVueLibPlugin {
-  const translatorPlugin = createTranslator('');
-
+export function createTestVueLib(options: PluginOptions): Plugin {
   return {
-    translator: translatorPlugin.global,
     install(app) {
       const finalOptions = {
         ...DEFAULT_OPTIONS,
@@ -36,8 +28,6 @@ export function createTestVueLib(options: PluginOptions): TestVueLibPlugin {
           ...options.counter,
         },
       };
-
-      app.use(translatorPlugin);
 
       app.provide(testVueLibKey, readonly(finalOptions));
     },

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useTranslator } from '@/locale';
+import { useI18n } from 'vue-i18n';
 
 defineOptions({
   name: 'ComponentA',
 });
 
-const { t } = useTranslator();
+const { t } = useI18n();
 </script>
 
 <template>
